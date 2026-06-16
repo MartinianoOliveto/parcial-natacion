@@ -23,9 +23,14 @@ describe "Natacion"{
    const rehabilitacion = new Terapeutico(docente=mara,cupo=4,estudiantesInscriptos=#{milena,camilo})
 
    test"Milena no puede inscribirse al curso de los martes, ya esta inscripta"{
-      assert.throwsException({martes.inscribir(milena)})
+      assert.notThat(martes.puedeInscribirse(milena))
    }
-   test"Matilda si puede inscribirse al curso de los martes"{
+   test"Matilda y Camilo si pueden inscribirse al curso de los martes"{
       assert.that(martes.puedeInscribirse(matilda))
+      assert.that(martes.puedeInscribirse(camilo))
    }
+   test"Elias no puede inscribirse al curso de los martes"{
+      assert.notThat(martes.puedeInscribirse(elias))
+   }
+
 }

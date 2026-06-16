@@ -16,7 +16,8 @@ class CursoBase{
         return estudiante.dominaAlMenosUnEstilo() || docente.esGuardavida()
     }
     method puedeInscribirse(estudiante){
-        return self.hayVacantes() && !self.estaInscripto(estudiante)  && docente.puedeDarClaseA(estudiante)
+        return self.hayVacantes() && !self.estaInscripto(estudiante)  && 
+                docente.puedeDarClaseA(estudiante) && self.cumpleObjetivo(estudiante)
     }
     method validarInscripcion(estudiante){
         self.validarSiEstaInscripto(estudiante)
@@ -50,8 +51,9 @@ class Escuelita inherits CursoBase{
     const edadAceptable = 13 
 
     override method cumpleObjetivo(estudiante){
-        return estudiante.esMenor(edadAceptable)
+        return super(estudiante) && estudiante.esMenor(edadAceptable)
     }
+
 }
 class Terapeutico inherits CursoBase{
     override method cumpleObjetivo(estudiante){

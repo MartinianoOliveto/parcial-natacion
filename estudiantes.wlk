@@ -8,7 +8,7 @@ class Estudiante{
     method domina(estilo){
         return estilosDominados.contains(estilo)
     }
-    method dominaAlMenosunEstilo(){
+    method dominaAlMenosUnEstilo(){
         return !estilosDominados.isEmpty()
     }
     method esMenor(_edad){

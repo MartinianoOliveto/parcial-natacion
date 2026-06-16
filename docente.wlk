@@ -3,6 +3,9 @@ class DocenteBasico{
     method puedeDarClaseA(estudiante){
         return true 
     }
+    method disminuirCupoMenores(){
+        
+    }
 }
 
 class Dedicado inherits DocenteBasico{
@@ -26,5 +29,8 @@ class Externo inherits DocenteBasico{
     }
     method hayCupoMenores(){
         return limiteMenores >0
+    }
+    override method disminuirCupoMenores(){
+        limiteMenores=-1
     }
 }

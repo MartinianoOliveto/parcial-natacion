@@ -29,6 +29,7 @@ class CursoBase{
         self.validarInscripcion(estudiante)
         estudiantesInscriptos.add(estudiante)
         cupo-=1
+        docente.disminuirCupoMenores()
     }
 
     //Validaciones 

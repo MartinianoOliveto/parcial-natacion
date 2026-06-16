@@ -40,5 +40,37 @@ describe "Natacion"{
       assert.equals(#{milena,rodrigo,matilda},martes.estudiantesInscriptos())
       assert.throwsException({martes.inscribir(camilo)})
    }
+   test "Elias puede inscribirse a los jueves"{
+      assert.that(jueves.puedeInscribirse(elias))
+   }
+   test"Curso basico docente dedicado"{
+      assert.notThat(viernes.puedeInscribirse(milena))
+      assert.that(viernes.puedeInscribirse(matilda))
+      assert.that(viernes.puedeInscribirse(camilo))
+      assert.notThat(viernes.puedeInscribirse(juana))
+      assert.throwsException({viernes.puedeInscribir(juana)})
+      viernes.inscribir(matilda)
+      assert.equals(#{milena,rodrigo,matilda},viernes.estudiantesInscriptos())
+      assert.notThat(viernes.puedeInscribirse(camilo))
+      assert.throwsException({viernes.puedeInscribir(camilo)})
+   }
+   test"Escuela de niños"{
+      assert.that(colonia.puedeInscribirse(matilda))
+      assert.notThat(colonia.puedeInscribirse(camilo))
+      assert.notThat(colonia.puedeInscribirse(elias))
+      assert.throwsException({colonia.puedeInscribir(camilo)})
+      assert.throwsException({colonia.puedeInscribir(elias)})
+      colonia.inscribir(matilda)
+      assert.equals(#{milena,rodrigo,matilda},colonia.estudiantesInscriptos())
+   }
+   test"Terapeutico docente externo"{
+      assert.notThat(rehabilitacion.puedeInscribirse(milena))
+      assert.notThat(rehabilitacion.puedeInscribirse(juana))
+      assert.that(rehabilitacion.puedeInscribirse(matilda))
+      assert.that(rehabilitacion.puedeInscribirse(rodrigo))
+      rehabilitacion.inscribir(matilda)
+      assert.throwsException({rehabilitacion.inscribir(rodrigo)})
+      assert.equals(#{milena,camilo,matilda},rehabilitacion.estudiantesInscriptos())
+   }
 
 }

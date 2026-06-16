@@ -1,10 +1,7 @@
 class Estudiante{
     const property estilosDominados=#{}
-    var edad 
+    var property edad 
 
-    method edad(_edad){
-        edad = _edad
-    }
     method domina(estilo){
         return estilosDominados.contains(estilo)
     }

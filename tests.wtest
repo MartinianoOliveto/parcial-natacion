@@ -32,5 +32,8 @@ describe "Natacion"{
    test"Elias no puede inscribirse al curso de los martes"{
       assert.notThat(martes.puedeInscribirse(elias))
    }
+   test"No puedo inscribir a elias a los martes"{
+      assert.throwsException({martes.inscribir(elias)})
+   }
 
 }

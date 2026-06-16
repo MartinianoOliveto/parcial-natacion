@@ -23,6 +23,7 @@ class CursoBase{
         self.validarSiEstaInscripto(estudiante)
         self.validarVacantes()
         self.validarDocente(estudiante)
+        self.validarObjetivo(estudiante)
     }
     method inscribir(estudiante){
         self.validarInscripcion(estudiante)
@@ -44,6 +45,11 @@ class CursoBase{
     method validarDocente(estudiante){
         if(!docente.puedeDarClaseA(estudiante)){
             self.error("El docente no esta habilitado")
+        }
+    }
+    method validarObjetivo(estudiante){
+        if(!self.cumpleObjetivo(estudiante)){
+            self.error("El estudiante no cumple el objetivo")
         }
     }
 }

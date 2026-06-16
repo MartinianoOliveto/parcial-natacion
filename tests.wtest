@@ -1,0 +1,27 @@
+import cursos.*
+import docente.*
+import estilos.*
+import estudiantes.*
+
+describe "Natacion"{
+   const debi = new DocenteBasico(esGuardavida=false)
+   const isa = new DocenteBasico(esGuardavida=true)
+   const nico = new Dedicado(estilo=pecho,esGuardavida=false)
+   const mara = new Externo(limiteMenores=2,esGuardavida=false)
+
+   const milena = new Estudiante(edad=10,estilosDominados=#{crol,pecho})
+   const rodrigo = new Estudiante(edad=9,estilosDominados=#{mariposa,pecho})
+   const matilda = new Estudiante(edad=9,estilosDominados=#{crol,pecho})
+   const elias = new Estudiante(edad=15)
+   const camilo = new Estudiante(edad=16,estilosDominados=#{crol,pecho,espalda})
+   const juana = new Estudiante(edad=16,estilosDominados=#{crol})
+
+   const martes = new CursoBase(docente=debi,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
+   const jueves = new CursoBase(docente=isa,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
+   const viernes = new CursoBase(docente=nico,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
+   const colonia = new Escuelita(docente=debi,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
+   const rehabilitacion = new Terapeutico(docente=mara,cupo=4,estudiantesInscriptos=#{milena,camilo})
+   test""{
+    
+   }
+}

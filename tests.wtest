@@ -20,7 +20,7 @@ describe "Natacion"{
    const jueves = new CursoBase(docente=isa,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
    const viernes = new CursoBase(docente=nico,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
    const colonia = new Escuelita(docente=debi,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
-   const rehabilitacion = new Terapeutico(docente=mara,cupo=4,estudiantesInscriptos=#{milena,camilo})
+   const rehabilitacion = new Terapeutico(docente=mara,cupo=4,estudiantesInscriptos=#{milena,camilo},recaudacionBruta=300)
 
    test"Milena no puede inscribirse al curso de los martes, ya esta inscripta"{
       assert.notThat(martes.puedeInscribirse(milena))

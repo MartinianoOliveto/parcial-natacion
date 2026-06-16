@@ -2,6 +2,7 @@ class CursoBase{
     const property estudiantesInscriptos=#{}
     var property cupo 
     var property docente 
+    const property recaudacionPorPersona = 20
 
     method estaInscripto(estudiante){
         return estudiantesInscriptos.contains(estudiante)
@@ -32,6 +33,28 @@ class CursoBase{
         docente.disminuirCupoMenores()
     }
 
+    method recaudacion(){
+        return self.recaudacionBruta() - docente.honorarios(self)
+    }
+    method recaudacionBruta(){
+        return self.totalBruto() - self.totalDescuentos()
+    }
+    method totalBruto(){
+        return recaudacionPorPersona * self.cantInscriptos() 
+    }
+    method cantInscriptos(){
+        return estudiantesInscriptos.size()
+    }
+    method totalDescuentos(){
+        return estudiantesInscriptos.sum({e => e.descuentos()})
+    }
+    method algunEstudianteDomina(estilo){
+        return estudiantesInscriptos.any({e => e.domina(estilo)})
+    }
+    method esInfantil(){
+        return estudiantesInscriptos.all({e =>e.esMenor(13)})
+    }
+
     //Validaciones 
     method validarSiEstaInscripto(estudiante){
         if(self.estaInscripto(estudiante)){
@@ -60,9 +83,13 @@ class Escuelita inherits CursoBase{
     override method cumpleObjetivo(estudiante){
         return super(estudiante) && estudiante.esMenor(edadAceptable)
     }
+    override method recaudacionBruta(){
+        return super() + 500
+    }
 
 }
 class Terapeutico inherits CursoBase{
+    var property recaudacionBruta
     override method cumpleObjetivo(estudiante){
         return estudiante.dominaAlMenosUnEstiloRelajante()
     }

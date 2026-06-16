@@ -14,4 +14,7 @@ class Estudiante{
     method dominaAlMenosUnEstiloRelajante(){
         return estilosDominados.any({e => e.esRelajante()})
     }
+    method descuentos(){
+        return estilosDominados.sum({e => e.descuentos()})
+    }
 }

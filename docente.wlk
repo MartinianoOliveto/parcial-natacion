@@ -1,10 +1,17 @@
 class DocenteBasico{
     var property esGuardavida
+    
     method puedeDarClaseA(estudiante){
         return true 
     }
     method disminuirCupoMenores(){
         
+    }
+    method honorarios(curso){
+        return 20 + curso.recaudacionBruta() * self.porcentaje()
+    }
+    method porcentaje(){
+        return 0.1
     }
 }
 
@@ -13,6 +20,9 @@ class Dedicado inherits DocenteBasico{
 
     override method puedeDarClaseA(estudiante){
         return estudiante.domina(estilo)
+    }
+    override method porcentaje(){
+        return 0.15
     }
 
 }
@@ -32,5 +42,8 @@ class Externo inherits DocenteBasico{
     }
     override method disminuirCupoMenores(){
         limiteMenores=-1
+    }
+    override method honorarios(curso){
+        return super(curso) + 3 *curso.cantIncriptos()
     }
 }

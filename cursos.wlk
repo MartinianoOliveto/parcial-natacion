@@ -15,13 +15,16 @@ class CursoBase{
     method cumpleObjetivo(estudiante){
         return estudiante.dominaAlMenosUnEstilo() || docente.esGuardavida()
     }
-    method puedeInscribir(estudiante){
+    method puedeInscribirse(estudiante){
+        return self.hayVacantes() && !self.estaInscripto(estudiante)  && docente.puedeDarClaseA(estudiante)
+    }
+    method validarInscripcion(estudiante){
         self.validarSiEstaInscripto(estudiante)
         self.validarVacantes()
         self.validarDocente(estudiante)
     }
     method inscribir(estudiante){
-        self.puedeInscribir(estudiante)
+        self.validarInscripcion(estudiante)
         estudiantesInscriptos.add(estudiante)
         cupo-=1
     }

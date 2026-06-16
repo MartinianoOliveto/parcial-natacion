@@ -21,7 +21,11 @@ describe "Natacion"{
    const viernes = new CursoBase(docente=nico,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
    const colonia = new Escuelita(docente=debi,cupo=3,estudiantesInscriptos=#{milena,rodrigo})
    const rehabilitacion = new Terapeutico(docente=mara,cupo=4,estudiantesInscriptos=#{milena,camilo})
-   test""{
-    
+
+   test"Milena no puede inscribirse al curso de los martes, ya esta inscripta"{
+      assert.throwsException({martes.inscribir(milena)})
+   }
+   test"Matilda si puede inscribirse al curso de los martes"{
+      assert.that(martes.puedeInscribirse(matilda))
    }
 }

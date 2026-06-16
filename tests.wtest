@@ -35,5 +35,10 @@ describe "Natacion"{
    test"No puedo inscribir a elias a los martes"{
       assert.throwsException({martes.inscribir(elias)})
    }
+   test"Inscribir a Matilda a los martes, Camilo no puede por falta de cupo"{
+      martes.inscribir(matilda)
+      assert.equals(#{milena,rodrigo,matilda},martes.estudiantesInscriptos())
+      assert.throwsException({martes.inscribir(camilo)})
+   }
 
 }
